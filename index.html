@@ -18,14 +18,38 @@
           <input type="text" name="firstName" class="form-control" ng-model="vm.newPerson.firstName" placeholder="First Name"/>
         </div>
         <!-- What other fields do we need to ask for in order to get the information we need? -->
+        <!-- last name -->
+        <div class="form-group col-md-6">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" class="form-control" ng-model="vm.newPerson.lastName" placeholder="Last Name"/>
+        </div>
+        <br>
+        <div class="form-group col-md-6">
+          <label for="git_username">Github Username</label>
+          <input type="text" name="git_username" class="form-control" ng-model="vm.newPerson.git_username" placeholder="Github Username"/>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="shoutout">Shoutout</label>
+          <input type="text" name="shoutout" class="form-control" ng-model="vm.newPerson.shoutout" placeholder="Shoutout"/>
+        </div>
+        <button ng-click="vm.createPerson()">Submit</button>
+        <br>
+        <div class="form-group col-md-6">
+          <label for="search">Search</label>
+          <input type="text" name="search" class="form-control" ng-model="vm.searchText" placeholder="Search"/>
+        </div>
       </form>
     </section>
+    
     <section class="container">
       <h3>Class List</h3>
+     
+      
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat=""> <!-- What needs to be repeated? -->
+        <li class="list-group-item" ng-repeat="thingy in vm.people | filter:searchText"> <!-- What needs to be repeated? -->
           <!-- TODO: Create a list item for everyone in the array -->
-          {{person.firstName}}<!-- include the other parameters for the person -->
+           <!-- include the other parameters for the person -->
+           <a href="https://github.com/{{thingy.git_username}}">{{thingy.firstName}} {{thingy.lastName}}</a> - {{thingy.shoutout}}
         </li>
       </ul>
     </section>
